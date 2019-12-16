@@ -17,3 +17,4 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2);
 	}
 }
+ 
