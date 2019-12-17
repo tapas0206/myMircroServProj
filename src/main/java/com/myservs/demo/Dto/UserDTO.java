@@ -5,10 +5,14 @@ import java.util.Date;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//@JsonIgnoreProperties(value= {"id","birthDate"})
 public class UserDTO {
 	
 	private int id;
-	
+//	@JsonIgnore
 	@Size(min =2,message="Minimum size is 2 Character")
 	private String name;
 	
