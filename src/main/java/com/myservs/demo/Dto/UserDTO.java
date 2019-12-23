@@ -1,16 +1,21 @@
 package com.myservs.demo.Dto;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 //@JsonIgnoreProperties(value= {"id","birthDate"})
+@Entity
 public class UserDTO {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 //	@JsonIgnore
 	@Size(min =2,message="Minimum size is 2 Character")
@@ -18,6 +23,9 @@ public class UserDTO {
 	
 	@Past(message="Birthdate should not be future date")
 	private Date birthDate;
+	
+	@OneToMany(mappedBy="userDTO")
+	private List<PostDTO> postDTO;
 	
 	protected UserDTO() {
 		
@@ -48,7 +56,11 @@ public class UserDTO {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	
-	
+	public List<PostDTO> getPostDTO() {
+		return postDTO;
+	}
+	public void setPostDTO(List<PostDTO> postDTO) {
+		this.postDTO = postDTO;
+	}
 
 }
